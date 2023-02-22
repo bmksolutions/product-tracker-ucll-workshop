@@ -27,6 +27,8 @@ class Product extends Model
             new Overrides(startUrls: [$this->url])
         );
 
+        // dd($items);
+
         $this->update([
             'price' => $items[0]->get('price'),
             'in_stock' => $items[0]->get('in_stock'),

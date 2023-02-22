@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Support\Str;
-
 enum RetailerEnum: string
 {
     case Coolblue = 'Coolblue';
@@ -14,6 +12,6 @@ enum RetailerEnum: string
 
     public function getSpiderClass(): string
     {
-        return 'App\\Spiders\\' . Str::studly($this->name) . 'Spider';
+        return 'App\\Spiders\\' . $this->name . 'Spider';
     }
 }
