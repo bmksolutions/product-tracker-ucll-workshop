@@ -20,6 +20,14 @@ class Product extends Model
         'retailer' => RetailerEnum::class
     ];
 
+    public function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value / 100,
+            set: fn($value) => $value * 100
+        );
+    }
+
     public function checkAndUpdateStock(): void
     {
         $items = Roach::collectSpider(
@@ -33,13 +41,5 @@ class Product extends Model
             'price' => $items[0]->get('price'),
             'in_stock' => $items[0]->get('in_stock'),
         ]);
-    }
-
-    public function price(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => $value / 100,
-            set: fn($value) => $value * 100
-        );
     }
 }
